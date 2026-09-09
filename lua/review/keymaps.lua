@@ -229,7 +229,7 @@ local function set_buffer_keymaps(bufnr)
       local ok, lifecycle = pcall(require, "codediff.ui.lifecycle")
       if not ok then return end
       local tabpage = vim.api.nvim_get_current_tabpage()
-      local explorer_obj = lifecycle.get_explorer(tabpage)
+      local explorer_obj = lifecycle.get_panel_view(tabpage)
       if explorer_obj then
         require("codediff.ui.explorer")["navigate_" .. direction](explorer_obj)
         vim.defer_fn(jump_to_first_hunk, 100)
@@ -274,7 +274,7 @@ local function set_buffer_keymaps(bufnr)
     local ok, lifecycle = pcall(require, "codediff.ui.lifecycle")
     if not ok then return end
     local tabpage = vim.api.nvim_get_current_tabpage()
-    local explorer_obj = lifecycle.get_explorer(tabpage)
+    local explorer_obj = lifecycle.get_panel_view(tabpage)
     if explorer_obj then
       require("codediff.ui.explorer").toggle_visibility(explorer_obj)
     end
